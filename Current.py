@@ -12,14 +12,8 @@ class MainWindow(QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
 
-        def random():
-            total_lines = len(word_list)  # Подсчет кол-ва строк в файле Words.py
-            random_line = randint(1, total_lines)  # Случайный выбор строки
-            hidden_word = word_list[random_line - 1][0]  # Загаданное слово
-            hidden_question = word_list[random_line - 1][1]  # Загаданный вопрос
-            print("Загаданное слово:", hidden_word)
-            print("Внимание вопрос!", hidden_question)
-            split(hidden_word)
+        def random_index():
+            return randint(1, len(word_list))
 
         def split(hidden_word):
             letters_list = [char for char in hidden_word]  # Массив букв
@@ -29,7 +23,10 @@ class MainWindow(QWidget):
 
         random()
 
-        hidden_word = "test"
+        index = random_index()
+        hidden_word = word_list[index][0]
+        hidden_question = word_list[index][1]
+        print(hidden_question)
 
         i = 0
         while i < len(hidden_word):
@@ -50,4 +47,5 @@ if __name__ == '__main__':
     window = MainWindow()
     window.show()
     app.exec_()
+
 
