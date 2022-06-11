@@ -16,23 +16,23 @@ class Ui_Form(object):
         Form.setObjectName("Form")
         Form.resize(1050, 100)
         font = QtGui.QFont()
-        font.setPointSize(48)
+        font.setPointSize(24)
         font.setBold(True)
         font.setWeight(75)
         Form.setFont(font)
         self.form = Form
-        self.horizontalLayoutWidget = QtWidgets.QWidget(Form)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(0, 0, 1000, 100))
+        self.horizontalLayoutWidget = QtWidgets.QWidget()
+        self.form.setCentralWidget(self.horizontalLayoutWidget)
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
+        self.vertical_layout = QtWidgets.QVBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.vertical_layout.addLayout(self.horizontalLayout)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.label = QtWidgets.QLabel(Form)
         self.label.setObjectName("label")
+        self.question_field = QtWidgets.QLabel(parent=self.horizontalLayoutWidget)
+        self.vertical_layout.addWidget(self.question_field)
 
-        self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
-    def retranslateUi(self, Form):
-        _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
